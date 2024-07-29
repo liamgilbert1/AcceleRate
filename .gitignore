@@ -1,11 +1,7 @@
 # Ignore Python virtual environment
-venv/
+/.venv
 
 # Ignore other files and directories
 __pycache__/
 *.pyc
 .DS_Store
-.DS_Store
-.DS_Store
-.DS_Store
-/.venv
