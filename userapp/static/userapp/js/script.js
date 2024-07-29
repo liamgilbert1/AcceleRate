@@ -75,6 +75,8 @@ function addressSelected() {
 // function to be called when the user has clicked the quote button
 function search() {
   if (searchable) {
+    // remove the polygons on the map if it already exists
+    polygons = [];
     // get the place object from the autocomplete object
     const place = autocomplete.getPlace();
     // get the latitude and longitude of the place
