@@ -1,0 +1,25 @@
+body {
+    font-family: system-ui;
+    color: black;
+}
+
+#search, #quote-button {
+    padding: 10px;
+    border: 1px solid #848484;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#quote-button {
+    cursor: pointer;
+}
+
+#search {
+    width: 200px;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    margin-top: 10px;
+}
