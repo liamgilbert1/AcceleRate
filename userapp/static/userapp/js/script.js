@@ -49,6 +49,13 @@ function initAutocomplete() {
     quoteButton.style.backgroundColor = '#BDBDBD';
   });
 
+  // adds event listener to the search box so that the enter key does not invoke a 'place_changed' event
+  searchBox.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.stopImmediatePropagation();
+    } 
+  });
+
   // adds event listeners to the quote button to call the search function on click
   quoteButton.addEventListener('click', search);
 
