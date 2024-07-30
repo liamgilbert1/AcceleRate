@@ -16,7 +16,7 @@ const searchBox = document.getElementById('search');
 let autocomplete;
 
 // the map object
-let map;
+const map = document.getElementById('map');
 
 // the drawing manager object
 let drawingManager;
@@ -83,7 +83,7 @@ function search() {
     longitude = place.geometry.location.lng();
     latitude = place.geometry.location.lat();
     // create the map object
-    staticMapImg = new google.maps.Map(document.getElementById('map'), {
+    staticMapImg = new google.maps.Map(map, {
       center: {lat: latitude, lng: longitude},
       zoom: 21,
       minZoom: 17,

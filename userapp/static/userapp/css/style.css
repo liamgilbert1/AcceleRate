@@ -16,3 +16,7 @@ body {
     height: 600px;
     margin-top: 10px;
 }
+
+#search {
+    width: 500px;
+}
