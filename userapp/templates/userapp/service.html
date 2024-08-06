@@ -16,50 +16,73 @@
       <img class="background-image" src="{% static 'images/AcceleRateBG.png' %}" />
     </div>
     <div class="select-services-page">
-      <div class="div">
-        <div class="divider"></div>
-        <div class="foreground">
-          <div class="select-service-rect"></div>
-            <div class="select-service-to-quote-text">
-              Select Services To Quote
-            </div>
-            <div class="add-service-rect"></div>
-            <div class="added-service-rect"></div>
-            <div class="service2-rect"></div>
-            <div class="service3-rect"></div>
-            <div class="service4-rect"></div>
-            <div class="service1-rect"></div>
-            <div class="selected-service-1-rect"></div>
-            <div class="selected-service-2-rect"></div>
-            <div class="service-1-text">Lawn Mowing</div>
-            <div class="selected-service-1-text">Selected Service 1</div>
-            <div class="selected-service-2-text">Selected Service 2</div>
-            <div class="service-2-text">Leaf Removal</div>
-            <div class="service-3-text">Service 3</div>
-            <div class="service-4-text">Service 4</div>
-            <div class="rectangle-11"></div>
-            <div class="rectangle-12"></div>
-            <div class="component"><div class="text-wrapper-8">Next</div></div>
-            <div class="click-to-add-text">Click to Add</div>
-            <div class="click-to-remove-text">Click to Remove</div>
+      <div class="header">
+        <div class="overlap-group">
+          <div class="checkpoint" id="checkpoint-1"></div>
+          <div class="progress-bar-line" id="bar-1"></div>
+          <div class="checkpoint" id="checkpoint-2"></div>
+          <div class="progress-bar-line" id="bar-2"></div>
+          <div class="checkpoint" id="checkpoint-3"></div>
+          <div class="progress-bar-line" id="bar-3"></div>
+          <div class="checkpoint" id="checkpoint-4"></div>
         </div>
-        <div class="services-text">Services</div>
-        <div class="details-text">Details</div>
-        <div class="estimates-text">Estimates</div>
-        <div class="submit-text">Submit</div>
-        <div class="progress-bar">
-          <div class="overlap-group">
-            <div class="ellipse"></div>
-            <div class="rectangle-13"></div>
-            <div class="rectangle-14"></div>
-            <div class="ellipse-2"></div>
-            <div class="ellipse-3"></div>
-            <div class="rectangle-15"></div>
-            <div class="ellipse-4"></div>
+        <div class = "progress-bar-text">
+          <div class="progress-text-box">
+            <div class="progress-text">Services</div>
+          </div>
+          <div class="progress-text-box">
+            <div class="progress-text">Details</div>
+          </div>
+          <div class="progress-text-box">
+            <div class="progress-text">Estimates</div>
+          </div>
+          <div class="progress-text-box">
+            <div class="progress-text">Submit</div>
           </div>
         </div>
-        <div class="next-wrapper">
-          <div class="next">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit</div>
+        <div class="exit-wrapper">
+          <div class="exit">Exit</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="body">
+        <div class="select-service-rect">
+          <div class="select-service-to-quote-text">
+            Select Services To Quote
+          </div>
+          <div class="service-rects">
+            <div class="add-services">
+              <div class="click-to-add-text">Click to Add</div>
+              <div class="add-service-rect">
+                <div></div>
+                <div class="service">
+                  <div class="service-text">Lawn Mowing</div>
+                </div>
+                <div class="service">
+                  <div class="service-text">Leaf Removal</div>
+                </div>
+                <div class="service">
+                  <div class="service-text">Service 3</div>
+                </div>
+                <div class="service">
+                  <div class="service-text">Service 4</div>
+                </div>
+              </div>
+            </div>
+            <div class="added-services">
+              <div class="click-to-remove-text">Click to Remove</div>
+              <div class="added-service-rect">
+                <div></div>
+                <div class="selected-service">
+                  <div class="selected-service-text">Selected Service 1</div>
+                </div>
+                <div class="selected-service">
+                  <div class="selected-service-text">Selected Service 2</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="next"><div class="text-wrapper-8">Next</div></div>
         </div>
       </div>
     </div>
