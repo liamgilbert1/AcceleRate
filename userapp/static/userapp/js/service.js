@@ -2,8 +2,12 @@ let activePage;
 let pages;
 let nextButtons;
 let backButtons;
+let progressCheckpoints;
+let progressLines;
+let progressText;
 
 document.addEventListener("DOMContentLoaded", function() {
+
     activePage = document.getElementById("service-selector");
     
     nextButtons = document.querySelectorAll('.next');
@@ -16,6 +20,15 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", back);
     });
 
+    progressLines = document.querySelectorAll('.progress-bar-line');
+    
+    progressText = document.querySelectorAll('.progress-text');
+    progressText[0].classList.add("active-progress-text");
+    progressText[0].classList.add("activated-progress-text");
+
+    progressCheckpoints = document.querySelectorAll('.checkpoint');
+    progressCheckpoints[0].classList.add("active-progress");
+    progressCheckpoints = Array.from(progressCheckpoints).slice(1);
 
     pages = [document.getElementById("service-selector"), document.getElementById("service-details"), document.getElementById("estimates"), document.getElementById("submit")];
     console.log("Pages:", pages);
@@ -28,6 +41,12 @@ function next() {
 
     let currentPageIndex = pages.indexOf(activePage);
     let newActivePage = pages[currentPageIndex + 1];
+
+    progressLines[currentPageIndex].classList.add("active-progress");
+    progressCheckpoints[currentPageIndex].classList.add("active-progress");
+    progressText[currentPageIndex + 1].classList.add("activated-progress-text");
+    progressText[currentPageIndex + 1].classList.add("active-progress-text");
+    progressText[currentPageIndex].classList.remove("active-progress-text");
     
     slideLeft(activePage);
     slideIn(newActivePage);
@@ -46,6 +65,12 @@ function back() {
 
     let currentPageIndex = pages.indexOf(activePage);
     let newActivePage = pages[currentPageIndex - 1];
+
+    progressLines[currentPageIndex - 1].classList.remove("active-progress");
+    progressCheckpoints[currentPageIndex - 1].classList.remove("active-progress");
+    progressText[currentPageIndex].classList.remove("activated-progress-text");
+    progressText[currentPageIndex].classList.remove("active-progress-text");
+    progressText[currentPageIndex - 1].classList.add("active-progress-text");
     
     slideRight(activePage);
     slideIn(newActivePage);

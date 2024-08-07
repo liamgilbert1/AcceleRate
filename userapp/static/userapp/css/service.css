@@ -188,16 +188,37 @@ body {
   height: 33px;
   border-radius: 16.5px;
   margin: -16.5px;
-}
-
-.active-checkpoint {
-  background-color: #48ab52;
+  z-index: 1;
 }
 
 .progress-bar-line {
   width: 277px;
   height: 11px;
   background-color: #d9d9d9;
+}
+
+.progress-text {
+  display: block;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #a0a0a0;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  margin: -width;
+}
+
+.active-progress-text {
+  font-size: 21px;
+}
+
+.activated-progress-text {
+  color: #48ab52;
+}
+
+.active-progress {
+  background-color: #48ab52;
 }
 
 .exit-wrapper {
@@ -274,18 +295,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-
-.progress-text {
-  display: block;
-  font-family: "Inter-Bold", Helvetica;
-  font-weight: 700;
-  color: #a0a0a0;
-  font-size: 17px;
-  letter-spacing: 0;
-  line-height: normal;
-  text-align: center;
-  margin: -width;
 }
 
 .service-rects {
