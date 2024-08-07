@@ -44,9 +44,6 @@ function next() {
 
     progressLines[currentPageIndex].classList.add("active-progress");
     progressCheckpoints[currentPageIndex].classList.add("active-progress");
-    progressText[currentPageIndex + 1].classList.add("activated-progress-text");
-    progressText[currentPageIndex + 1].classList.add("active-progress-text");
-    progressText[currentPageIndex].classList.remove("active-progress-text");
     
     slideLeft(activePage);
     slideIn(newActivePage);
@@ -55,6 +52,9 @@ function next() {
         activePage.style.display = "none";
         activePage.removeEventListener("transitionend", handleTransition);
         activePage = newActivePage;
+        progressText[currentPageIndex + 1].classList.add("activated-progress-text");
+        progressText[currentPageIndex + 1].classList.add("active-progress-text");
+        progressText[currentPageIndex].classList.remove("active-progress-text");
     });
 }
 
@@ -67,9 +67,9 @@ function back() {
     let newActivePage = pages[currentPageIndex - 1];
 
     progressLines[currentPageIndex - 1].classList.remove("active-progress");
-    progressCheckpoints[currentPageIndex - 1].classList.remove("active-progress");
     progressText[currentPageIndex].classList.remove("activated-progress-text");
     progressText[currentPageIndex].classList.remove("active-progress-text");
+    progressCheckpoints[currentPageIndex - 1].classList.remove("active-progress");
     progressText[currentPageIndex - 1].classList.add("active-progress-text");
     
     slideRight(activePage);
