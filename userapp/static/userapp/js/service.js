@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     services.forEach(service => {
         service.addEventListener("click", function() {
             select(service)
-        });
+        }, {once: true});
     });
 
     progressLines = document.querySelectorAll('.progress-bar-line');
@@ -111,22 +111,26 @@ function slideRight(page) {
 
 
 function select(service) {
-    document.getElementById("services").removeChild(service);
+    if (service.classList.contains("selected-service")) {
+        return;
+    }
+    let newService = service.cloneNode(true);
+    newService.classList.add("added-service");
     service.classList.add("selected-service");
-    document.getElementById("selected-services").appendChild(service);
-    service.removeEventListener("click", function(){});
+    document.getElementById("selected-services").appendChild(newService);
     service.addEventListener("click", function() {
         deselect(service);
-    });
+        document.getElementById("selected-services").removeChild(newService);
+    }, {once: true});
 }
 
 function deselect(service) {
-    document.getElementById("selected-services").removeChild(service);
+    if (!service.classList.contains("selected-service")) {
+        return;
+    }
     service.classList.remove("selected-service");
-    document.getElementById("services").appendChild(service);
-    service.removeEventListener("click", function(){});
     service.addEventListener("click", function() {
         select(service);
-    });
+    }, {once: true});
 }
 

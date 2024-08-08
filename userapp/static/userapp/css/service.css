@@ -147,6 +147,7 @@ body {
   justify-content: center;
   align-items: center;
   border: none;
+  justify-self: flex-end;
 }
 
 .back {
@@ -286,7 +287,12 @@ body {
 }
 
 .selected-service {
+  background-color: #929292;
+}
+
+.added-service {
   background-color: #48ab52;
+  cursor: default;
 }
 
 .service-text,
@@ -315,6 +321,12 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.services-page-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 568px;
 }
 
 .service-rects {
@@ -388,7 +400,7 @@ body {
 }
 
 .buttons {
-  width: 562px;
+  width: 568px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
