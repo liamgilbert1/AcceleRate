@@ -78,6 +78,10 @@ body {
   transform: translateX(100vw);
 }
 
+.estimates-services {
+
+}
+
 #submit {
   position: absolute;
   width: 635px;
@@ -147,7 +151,6 @@ body {
   justify-content: center;
   align-items: center;
   border: none;
-  justify-self: flex-end;
 }
 
 .back {
@@ -373,7 +376,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+}
+
+.final-service-rect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .service-range {
@@ -387,6 +396,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .service-range-text {
