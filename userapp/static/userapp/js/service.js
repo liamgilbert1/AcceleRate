@@ -5,6 +5,7 @@ let backButtons;
 let progressCheckpoints;
 let progressLines;
 let progressText;
+let services;
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -20,6 +21,13 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", back);
     });
 
+    services = document.querySelectorAll('.service');
+    services.forEach(service => {
+        service.addEventListener("click", function() {
+            select(service)
+        });
+    });
+
     progressLines = document.querySelectorAll('.progress-bar-line');
     
     progressText = document.querySelectorAll('.progress-text');
@@ -31,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
     progressCheckpoints = Array.from(progressCheckpoints).slice(1);
 
     pages = [document.getElementById("service-selector"), document.getElementById("service-details"), document.getElementById("estimates"), document.getElementById("submit")];
-    console.log("Pages:", pages);
+    console.log("Services:", services);
 });
 
 function next() {
@@ -98,6 +106,27 @@ function slideIn(page) {
 function slideRight(page) {
     requestAnimationFrame(() => {
         page.style.transform = "translateX(100vw)";
+    });
+}
+
+
+function select(service) {
+    document.getElementById("services").removeChild(service);
+    service.classList.add("selected-service");
+    document.getElementById("selected-services").appendChild(service);
+    service.removeEventListener("click", function(){});
+    service.addEventListener("click", function() {
+        deselect(service);
+    });
+}
+
+function deselect(service) {
+    document.getElementById("selected-services").removeChild(service);
+    service.classList.remove("selected-service");
+    document.getElementById("services").appendChild(service);
+    service.removeEventListener("click", function(){});
+    service.addEventListener("click", function() {
+        select(service);
     });
 }
 
