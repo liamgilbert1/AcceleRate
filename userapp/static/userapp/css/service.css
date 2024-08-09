@@ -450,3 +450,21 @@ body {
 .message-input {
   height: 150px;
 }
+
+#quote-button, #search, #get-area {
+  border: 1px solid #848484;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+#map {
+  width: 600px;
+  height: 600px;
+  margin-top: 10px;
+}
+
+#search {
+  width: 500px;
+}

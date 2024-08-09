@@ -117,6 +117,13 @@
         </div>
         <div id="service-details">
           <div class="select-service-to-quote-text">Enter Your Address</div>
+          <div id="search-tool">
+            <input id="search" type="text" placeholder="Enter your address" />
+            <button id="quote-button">Quote</button>
+            <button id="get-area">Get Area</button>
+            <div id="area"></div>
+          </div>
+          <div id="map"></div>
           <div class="buttons">
             <button class="back"><div class="text-wrapper-8">Back</div></button>
             <button class="next"><div class="text-wrapper-8">Next</div></button>
@@ -184,15 +191,15 @@
             </form>
           </div>
         </div>
-
-
-
-
         <div class="buttons">
           <button class="back"><div class="text-wrapper-8">Back</div></button>
           <button class="submit-button"><div class="text-wrapper-8">Submit</div></button>
       </div>
     </div>
     <script src="{% static 'userapp/js/service.js' %}"></script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-5X3qnVlaTu7rlwcpV7neQZDCEw-eMdA&loading=async&libraries=places,drawing,geometry"
+    ></script>
   </body>
 </html>
