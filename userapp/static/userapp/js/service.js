@@ -16,6 +16,8 @@ let progressText;
 // determines if the search box has been filled out with an address selected from the autocomplete dropdown
 let searchable = false;
 
+const serviceSelector = document.getElementById('service-selector');
+
 // button to look up the address
 const quoteButton = document.getElementById('quote-button');
 
@@ -43,6 +45,10 @@ let polygons = [];
 // the number of polygons, used to assign an id to each polygon
 let numPolygons = 0;
 
+const serviceSelectionColumns = document.getElementById('service-selection-columns');
+
+const serviceSelectorMaxWidth = window.getComputedStyle(serviceSelector).maxWidth.replace('px', '');
+
 let nextButtons;
 
 let backButtons;
@@ -50,6 +56,10 @@ let backButtons;
 // event listener for the DOMContentLoaded event
 // initializes the variables and adds event listeners
 document.addEventListener("DOMContentLoaded", function() {
+    checkOrientation();
+
+    window.addEventListener('resize', checkOrientation);
+
     activePage = document.getElementById("service-selector");
     
     nextButtons = document.querySelectorAll('.next');
@@ -213,6 +223,32 @@ function deselect(service) {
     service.addEventListener("click", function() {
         select(service);
     }, {once: true});
+}
+
+function checkOrientation() {
+    const exitElement = document.getElementById('exit');
+    const serviceSelectionColumn = document.getElementById('service-selection-column');
+    const landscapeServiceSelectionColumn = document.getElementById('landscape-service-selection-column');
+    if (window.innerHeight > window.innerWidth) {
+        if (exitElement) {
+            exitElement.style.display = 'none';
+        }
+    } else {
+        if (exitElement) {
+            exitElement.style.display = 'block';
+        }
+    }
+    
+
+
+    if (window.innerWidth < serviceSelectorMaxWidth) {
+        console.log('mobile');
+        landscapeServiceSelectionColumn.style.display = 'none';
+        serviceSelectionColumn.classList.add('service-selection-column-mobile');
+    } else {
+        landscapeServiceSelectionColumn.style.display = 'flex';
+        serviceSelectionColumn.classList.remove('service-selection-column-mobile');
+    }
 }
 
 // initializes the autocomplete object and adds event listeners
