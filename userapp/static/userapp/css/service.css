@@ -30,7 +30,6 @@ body {
   width: 100%;
   height: 4px;
   top: 120px;
-  left: 0;
   background-color: #9b9b9b;
 }
 
@@ -76,10 +75,6 @@ body {
   justify-content: space-around;
   transition: transform 0.5s ease-out;
   transform: translateX(100vw);
-}
-
-.estimates-services {
-
 }
 
 #submit {
@@ -172,17 +167,7 @@ body {
   text-align: center;
 }
 
-.click-to-add-text {
-  font-family: "Roboto-ExtraBold", Helvetica;
-  font-weight: 800;
-  color: #555050e8;
-  font-size: 15px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.click-to-remove-text {
+.click-to-add-text, .click-to-remove-text {
   font-family: "Roboto-ExtraBold", Helvetica;
   font-weight: 800;
   color: #555050e8;
