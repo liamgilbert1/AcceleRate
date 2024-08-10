@@ -12,12 +12,6 @@
     />
   </head>
   <body>
-    <div class="background-image">
-      <img
-        class="background-image"
-        src="{% static 'images/AcceleRateBG.png' %}"
-      />
-    </div>
     <div class="select-services-page">
       <div class="header">
         <div class="overlap-group">
@@ -47,76 +41,64 @@
           <div class="exit">Exit</div>
         </div>
       </div>
-      <div class="divider"></div>
       <div class="body">
-        <div class="select-service-rect" id="service-selector">
-          <div class="select-service-to-quote-text">
+        <div class="background-image"></div>
+        <div id="service-selector">
+          <div class="page-section-title">
             Select Services To Quote
           </div>
-          <div class="service-rects">
-            <div class="add-services">
-              <div class="click-to-add-text">Click to Add or Remove</div>
-              <div class="add-service-rect">
-                <div class="scrollable-services">
-                  <div id="services">
-                    <button class="service">
-                      <div class="service-text">Lawn Mowing</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Leaf Removal</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Hedge Trimming</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Lawn Fertilization</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Weed Control</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Mulching</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Tree Trimming</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Seeding</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Aeration</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Snow Removal</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Pest Control</div>
-                    </button>
-                    <button class="service">
-                      <div class="service-text">Gutter Cleaning</div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="added-services">
-              <div class="click-to-remove-text">Selected Services</div>
-              <div class="added-service-rect">
-                <div class="scrollable-services">
-                  <div id="selected-services">
-                    
-                  </div>
+          <div class="service-selection-column">
+            <div class="click-to-add-text">Click to Add or Remove</div>
+            <div class="services-rect">
+              <div class="scrollable-services">
+                <div id="services">
+                  <button class="service">
+                    <div class="service-text">Lawn Mowing</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Leaf Removal</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Hedge Trimming</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Lawn Fertilization</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Weed Control</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Mulching</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Tree Trimming</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Seeding</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Aeration</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Snow Removal</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Pest Control</div>
+                  </button>
+                  <button class="service">
+                    <div class="service-text">Gutter Cleaning</div>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div class="buttons">
-            <div class="custom-width"></div>
+            <div></div>
             <button class="next"><div class="text-wrapper-8">Next</div></button>
           </div>
         </div>
         <div id="service-details">
-          <div class="select-service-to-quote-text">Enter Your Address</div>
+          <div class="page-section-title">Enter Your Address</div>
           <div id="search-tool">
             <input id="search" type="text" placeholder="Enter your address" />
             <button id="quote-button">Quote</button>
@@ -153,47 +135,49 @@
             <button class="back"><div class="text-wrapper-8">Back</div></button>
             <button class="next"><div class="text-wrapper-8">Next</div></button>
           </div>
-      </div>
-      <div id="submit">
-        <div class="select-service-to-quote-text">Submit Your Service Request</div>
-        <div class="price-range-text-2">$000.00 - $9,999.00</div>
-        <div class="add-services">
-          <div class="click-to-remove-text">Enter the following and we will contact you shortly</div>
-          <div class="form-rect">
-            <form class="contact-form" id="contact-form">
-              <input 
-                class="contact-inputs"
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Full Name"
-              />
-              <input
-                class="contact-inputs"
-                type="text"
-                id="email"
-                name="Email"
-                placeholder="Email"
-              />
-              <input
-                class="contact-inputs"
-                type="text"
-                id="phone"
-                name="phone"
-                placeholder="Phone Number"
-              />
-              <textarea
-                class="message-input"
-                id="message"
-                name="message"
-                placeholder="*Optional Message"
-              ></textarea>
-            </form>
+        </div>
+        <div id="submit">
+          <div class="select-service-to-quote-text">Submit Your Service Request</div>
+          <div class="price-range-text-2">$000.00 - $9,999.00</div>
+          <div class="add-services">
+            <div class="click-to-remove-text">Enter the following and we will contact you shortly</div>
+            <div class="form-rect">
+              <form class="contact-form" id="contact-form">
+                <input 
+                  class="contact-inputs"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Full Name"
+                />
+                <input
+                  class="contact-inputs"
+                  type="text"
+                  id="email"
+                  name="Email"
+                  placeholder="Email"
+                />
+                <input
+                  class="contact-inputs"
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone Number"
+                />
+                <textarea
+                  class="message-input"
+                  id="message"
+                  name="message"
+                  placeholder="*Optional Message"
+                ></textarea>
+              </form>
+            </div>
+          </div>
+          <div class="buttons">
+            <button class="back"><div class="text-wrapper-8">Back</div></button>
+            <button class="submit-button"><div class="text-wrapper-8">Submit</div></button>
           </div>
         </div>
-        <div class="buttons">
-          <button class="back"><div class="text-wrapper-8">Back</div></button>
-          <button class="submit-button"><div class="text-wrapper-8">Submit</div></button>
       </div>
     </div>
     <script src="{% static 'userapp/js/service.js' %}"></script>

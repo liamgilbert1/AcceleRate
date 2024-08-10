@@ -43,20 +43,20 @@ let polygons = [];
 // the number of polygons, used to assign an id to each polygon
 let numPolygons = 0;
 
+let nextButtons;
+
+let backButtons;
+
 // event listener for the DOMContentLoaded event
 // initializes the variables and adds event listeners
 document.addEventListener("DOMContentLoaded", function() {
     activePage = document.getElementById("service-selector");
     
-    let nextButtons = document.querySelectorAll('.next');
-    nextButtons.forEach(button => {
-        button.addEventListener("click", next);
-    });
+    nextButtons = document.querySelectorAll('.next');
+    listenNext();
 
-    let backButtons = document.querySelectorAll('.back');
-    backButtons.forEach(button => {
-        button.addEventListener("click", back);
-    });
+    backButtons = document.querySelectorAll('.back');
+    listenBack();
 
     let services = document.querySelectorAll('.service');
     services.forEach(service => {
@@ -79,11 +79,38 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log("Services:", services);
 });
 
+function listenNext() {
+    nextButtons.forEach(button => {
+        button.addEventListener("click", next);
+    });
+}
+
+function listenBack() {
+    backButtons.forEach(button => {
+        button.addEventListener("click", back);
+    });
+}
+
+function ignoreNext() {
+    nextButtons.forEach(button => {
+        button.removeEventListener("click", next);
+    });
+}
+
+function ignoreBack() {
+    backButtons.forEach(button => {
+        button.removeEventListener("click", back);
+    });
+}
+
 // function to go to the next page
 function next() {
     if (activePage === pages[pages.length - 1]) {
         return;
     }
+
+    ignoreNext();
+    ignoreBack();
 
     let currentPageIndex = pages.indexOf(activePage);
     let newActivePage = pages[currentPageIndex + 1];
@@ -105,6 +132,8 @@ function next() {
         if (activePage === pages[1]) {
             initAutocomplete();
         }
+        listenNext();
+        listenBack();
     });
 }
 
@@ -113,6 +142,9 @@ function back() {
     if (activePage === pages[0]) {
         return;
     }
+
+    ignoreNext();
+    ignoreBack();
 
     let currentPageIndex = pages.indexOf(activePage);
     let newActivePage = pages[currentPageIndex - 1];
@@ -130,6 +162,8 @@ function back() {
         activePage.style.display = "none";
         activePage.removeEventListener("transitionend", handleTransition);
         activePage = newActivePage;
+        listenNext();
+        listenBack();
     });
 }
 
