@@ -229,6 +229,7 @@ function checkOrientation() {
     const exitElement = document.getElementById('exit');
     const serviceSelectionColumn = document.getElementById('service-selection-column');
     const landscapeServiceSelectionColumn = document.getElementById('landscape-service-selection-column');
+    
     if (window.innerHeight > window.innerWidth) {
         if (exitElement) {
             exitElement.style.display = 'none';
@@ -239,8 +240,6 @@ function checkOrientation() {
         }
     }
     
-
-
     if (window.innerWidth < serviceSelectorMaxWidth) {
         console.log('mobile');
         landscapeServiceSelectionColumn.style.display = 'none';
