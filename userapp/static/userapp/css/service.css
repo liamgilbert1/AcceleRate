@@ -270,10 +270,8 @@ body {
   align-items: center;
 }
 
-.service {
   position: relative;
   width: 190px;
-  height: 35px;
   border-radius: 10px;
   box-shadow: 0px 4px 4px #00000040;
   display: flex;

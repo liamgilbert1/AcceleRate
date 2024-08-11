@@ -256,13 +256,19 @@ function checkOrientation() {
             screenOrientation = 'landscape';
         }
     }
+<<<<<<< HEAD
     
     if ((window.innerWidth < serviceSelectorMaxWidth && screenOrientation === 'landscape') 
         || (window.innerWidth >= serviceSelectorMaxWidth && screenOrientation === 'portrait')) {
         orientationSwap();
+=======
+    if (!screenOrientation) {
+      screenOrientation = "portrait";
+>>>>>>> parent of b203dda (Merge branch 'main' of https://github.com/liamgilbert1/AcceleRate)
     }
 }
 
+<<<<<<< HEAD
 function orientationSwap() {
     if (screenOrientation === 'portrait') {
         landscapeServiceSelectionColumn.style.display = 'flex';
@@ -273,6 +279,18 @@ function orientationSwap() {
         serviceSelectionColumn.classList.add('service-selection-column-mobile');
         screenOrientation = 'portrait';
     }
+=======
+function portraitLandscapeSwap() {
+  if (screenOrientation === "portrait") {
+    landscapeServiceSelectionColumn.style.display = "flex";
+    serviceSelectionColumn.classList.remove("service-selection-column-mobile");
+    screenOrientation = "landscape";
+  } else {
+    landscapeServiceSelectionColumn.style.display = "none";
+    serviceSelectionColumn.classList.add("service-selection-column-mobile");
+    screenOrientation = "portrait";
+  }
+>>>>>>> parent of b203dda (Merge branch 'main' of https://github.com/liamgilbert1/AcceleRate)
 
     // select all media with class selected-service
     // select all media with class added-service
