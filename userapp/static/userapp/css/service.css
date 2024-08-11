@@ -264,7 +264,7 @@ body {
 }
 
 #services,
-#selected-services {
+#landscape-services {
   display: flex;
   flex-direction: column;
   align-items: center;
