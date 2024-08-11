@@ -247,13 +247,17 @@ function checkOrientation() {
         }
         if (!screenOrientation) {
             screenOrientation = 'portrait';
+            landscapeServiceSelectionColumn.style.display = 'none';
+            serviceSelectionColumn.classList.add('service-selection-column-mobile');
         }
     } else {
         if (exitElement) {
-            exitElement.style.display = 'block';
+            exitElement.style.display = 'flex';
         }
         if (!screenOrientation) {
             screenOrientation = 'landscape';
+            landscapeServiceSelectionColumn.style.display = 'flex';
+            serviceSelectionColumn.classList.remove('service-selection-column-mobile');
         }
     }
     
