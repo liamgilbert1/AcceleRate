@@ -272,7 +272,11 @@ function deselect(service) {
   if (!service.classList.contains("selected-service")) {
     return;
   }
-  service.classList.remove("selected-service");
+  if (screenOrientation === "landscape") {
+    service.classList.remove("selected-service");
+  } else {
+    service.classList.remove("added-service");
+  }
   service.addEventListener(
     "click",
     function () {
@@ -283,32 +287,61 @@ function deselect(service) {
 }
 
 function checkOrientation() {
-  const exitElement = document.getElementById("exit");
-  const serviceSelectionColumn = document.getElementById(
-    "service-selection-column"
-  );
-  const landscapeServiceSelectionColumn = document.getElementById(
-    "landscape-service-selection-column"
-  );
-
   if (window.innerHeight > window.innerWidth) {
     if (exitElement) {
       exitElement.style.display = "none";
+    }
+    if (!screenOrientation) {
+      screenOrientation = "portrait";
     }
   } else {
     if (exitElement) {
       exitElement.style.display = "block";
     }
+    if (!screenOrientation) {
+      screenOrientation = "landscape";
+    }
   }
 
-  if (window.innerWidth < serviceSelectorMaxWidth) {
-    console.log("mobile");
-    landscapeServiceSelectionColumn.style.display = "none";
-    serviceSelectionColumn.classList.add("service-selection-column-mobile");
-  } else {
+  if (
+    (window.innerWidth < serviceSelectorMaxWidth &&
+      screenOrientation === "landscape") ||
+    (window.innerWidth >= serviceSelectorMaxWidth &&
+      screenOrientation === "portrait")
+  ) {
+    portraitLandscapeSwap();
+  }
+}
+
+function portraitLandscapeSwap() {
+  if (screenOrientation === "portrait") {
     landscapeServiceSelectionColumn.style.display = "flex";
     serviceSelectionColumn.classList.remove("service-selection-column-mobile");
+    screenOrientation = "landscape";
+  } else {
+    landscapeServiceSelectionColumn.style.display = "none";
+    serviceSelectionColumn.classList.add("service-selection-column-mobile");
+    screenOrientation = "portrait";
   }
+
+  // select all media with class selected-service
+  // select all media with class added-service
+
+  // add added-service to selected-service and remove selected-service
+  // add selected-service to added-service and remove added-service
+
+  let selectedServices = document.querySelectorAll(".selected-service");
+  let addedServices = document.querySelectorAll(".added-service");
+
+  selectedServices.forEach((service) => {
+    service.classList.add("added-service");
+    service.classList.remove("selected-service");
+  });
+
+  addedServices.forEach((service) => {
+    service.classList.add("selected-service");
+    service.classList.remove("added-service");
+  });
 }
 
 // initializes the autocomplete object and adds event listeners
