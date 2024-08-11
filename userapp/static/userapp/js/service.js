@@ -16,6 +16,10 @@ let progressText;
 // determines if the search box has been filled out with an address selected from the autocomplete dropdown
 let searchable = false;
 
+const exitElement = document.getElementById('exit');
+const serviceSelectionColumn = document.getElementById('service-selection-column');
+const landscapeServiceSelectionColumn = document.getElementById('landscape-service-selection-column');
+
 const serviceSelector = document.getElementById('service-selector');
 
 // button to look up the address
@@ -44,6 +48,8 @@ let polygons = [];
 
 // the number of polygons, used to assign an id to each polygon
 let numPolygons = 0;
+
+let screenOrientation;
 
 const serviceSelectionColumns = document.getElementById('service-selection-columns');
 
@@ -205,12 +211,17 @@ function select(service) {
         return;
     }
     let newService = service.cloneNode(true);
-    newService.classList.add("added-service");
-    service.classList.add("selected-service");
-    document.getElementById("selected-services").appendChild(newService);
+    document.getElementById("landscape-services").appendChild(newService);
+    if (screenOrientation === 'landscape') {
+        newService.classList.add("added-service");
+        service.classList.add("selected-service");
+    } else {
+        newService.classList.add("selected-service");
+        service.classList.add("added-service");
+    }
     service.addEventListener("click", function() {
         deselect(service);
-        document.getElementById("selected-services").removeChild(newService);
+        document.getElementById("landscape-services").removeChild(newService);
     }, {once: true});
 }
 
@@ -219,35 +230,69 @@ function deselect(service) {
     if (!service.classList.contains("selected-service")) {
         return;
     }
-    service.classList.remove("selected-service");
+    if (screenOrientation === 'landscape') {
+        service.classList.remove("selected-service");
+    } else {
+        service.classList.remove("added-service");
+    }
     service.addEventListener("click", function() {
         select(service);
     }, {once: true});
 }
 
 function checkOrientation() {
-    const exitElement = document.getElementById('exit');
-    const serviceSelectionColumn = document.getElementById('service-selection-column');
-    const landscapeServiceSelectionColumn = document.getElementById('landscape-service-selection-column');
-    
     if (window.innerHeight > window.innerWidth) {
         if (exitElement) {
             exitElement.style.display = 'none';
+        }
+        if (!screenOrientation) {
+            screenOrientation = 'portrait';
         }
     } else {
         if (exitElement) {
             exitElement.style.display = 'block';
         }
+        if (!screenOrientation) {
+            screenOrientation = 'landscape';
+        }
     }
     
-    if (window.innerWidth < serviceSelectorMaxWidth) {
-        console.log('mobile');
-        landscapeServiceSelectionColumn.style.display = 'none';
-        serviceSelectionColumn.classList.add('service-selection-column-mobile');
-    } else {
+    if ((window.innerWidth < serviceSelectorMaxWidth && screenOrientation === 'landscape') 
+        || (window.innerWidth >= serviceSelectorMaxWidth && screenOrientation === 'portrait')) {
+        portraitLandscapeSwap();
+    }
+}
+
+function portraitLandscapeSwap() {
+    if (screenOrientation === 'portrait') {
         landscapeServiceSelectionColumn.style.display = 'flex';
         serviceSelectionColumn.classList.remove('service-selection-column-mobile');
+        screenOrientation = 'landscape';
+    } else {
+        landscapeServiceSelectionColumn.style.display = 'none';
+        serviceSelectionColumn.classList.add('service-selection-column-mobile');
+        screenOrientation = 'portrait';
     }
+
+    // select all media with class selected-service
+    // select all media with class added-service
+
+    // add added-service to selected-service and remove selected-service
+    // add selected-service to added-service and remove added-service
+
+    let selectedServices = document.querySelectorAll('.selected-service');
+    let addedServices = document.querySelectorAll('.added-service');
+
+    selectedServices.forEach(service => {
+        service.classList.add('added-service');
+        service.classList.remove('selected-service');
+    });
+
+    addedServices.forEach(service => {
+        service.classList.add('selected-service');
+        service.classList.remove('added-service');
+    });
+
 }
 
 // initializes the autocomplete object and adds event listeners
