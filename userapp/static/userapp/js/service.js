@@ -259,11 +259,11 @@ function checkOrientation() {
     
     if ((window.innerWidth < serviceSelectorMaxWidth && screenOrientation === 'landscape') 
         || (window.innerWidth >= serviceSelectorMaxWidth && screenOrientation === 'portrait')) {
-        portraitLandscapeSwap();
+        orientationSwap();
     }
 }
 
-function portraitLandscapeSwap() {
+function orientationSwap() {
     if (screenOrientation === 'portrait') {
         landscapeServiceSelectionColumn.style.display = 'flex';
         serviceSelectionColumn.classList.remove('service-selection-column-mobile');
