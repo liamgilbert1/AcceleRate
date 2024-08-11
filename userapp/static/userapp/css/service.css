@@ -134,7 +134,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  
 }
 
 .service-selection-column {
@@ -365,8 +364,10 @@ body {
 
 .service-range-rect,
 .form-rect {
+  position: relative;
   width: 562px;
   height: 321px;
+  overflow-y: scroll;
   background-color: #d9d9d9;
   border-radius: 25px;
   box-shadow: inset 0px 4px 4px #00000040;
@@ -390,7 +391,7 @@ body {
 .service-range {
   position: relative;
   width: 509px;
-  height: 75px;
+  min-height: 75px;
   background-color: #ffffff;
   border-radius: 25px;
   box-shadow: 0px 4px 4px #00000040;
@@ -442,7 +443,9 @@ body {
   height: 150px;
 }
 
-#quote-button, #search, #get-area {
+#quote-button,
+#search,
+#get-area {
   border: 1px solid #848484;
   border-radius: 5px;
   cursor: pointer;
