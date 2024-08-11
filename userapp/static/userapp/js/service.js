@@ -71,14 +71,7 @@ let backButtons;
 let serviceContainer;
 
 // dummy data for the services
-let estServices = [
-  { name: "Lawn Mowing", range: "$000.00 - $9,999.00" },
-  { name: "Leaf Removal", range: "$000.00 - $9,999.00" },
-  { name: "Hedge Trimming", range: "$000.00 - $9,999.00" },
-  { name: "Lawn Fertilization", range: "$000.00 - $9,999.00" },
-  { name: "Weed Control", range: "$000.00 - $9,999.00" },
-  { name: "Aeration", range: "$000.00 - $9,999.00" },
-];
+let estServices = [];
 
 // event listener for the DOMContentLoaded event
 // initializes the variables and adds event listeners
@@ -128,10 +121,11 @@ document.addEventListener("DOMContentLoaded", function () {
   outputServices(estServices);
 });
 
-function outputServices(estServices) {
+function outputServices() {
+  serviceContainer.innerHTML = "";
   estServices.forEach((service) => {
     let serviceRange = document.createElement("div");
-    serviceRange.classList.add("service-range");
+    serviceRange.classList.add("service-estimate");
 
     let serviceName = document.createElement("div");
     serviceName.classList.add("service-range-text");
@@ -187,6 +181,14 @@ function next() {
   progressLines[currentPageIndex].classList.add("active-progress");
   progressCheckpoints[currentPageIndex].classList.add("active-progress");
 
+  if (activePage === pages[1]) {
+    initAutocomplete();
+  }
+
+  if (newActivePage === pages[2]) {
+    outputServices();
+  }
+
   slideLeft(activePage);
   slideIn(newActivePage);
 
@@ -197,10 +199,6 @@ function next() {
     progressText[currentPageIndex + 1].classList.add("activated-progress-text");
     progressText[currentPageIndex + 1].classList.add("active-progress-text");
     progressText[currentPageIndex].classList.remove("active-progress-text");
-    // check if page is the service details page and if it is, call the initAutocomplete function
-    if (activePage === pages[1]) {
-      initAutocomplete();
-    }
     listenNext();
     listenBack();
   });
@@ -272,6 +270,7 @@ function select(service) {
     newService.classList.add("selected-service");
     service.classList.add("added-service");
   }
+  estServices.push({name: service.textContent, range: "$TBD-$TBD"});
   service.addEventListener(
     "click",
     function () {
@@ -292,6 +291,7 @@ function deselect(service) {
   } else {
     service.classList.remove("added-service");
   }
+  estServices = estServices.filter((estService) => estService.name !== service.textContent);
   service.addEventListener(
     "click",
     function () {
