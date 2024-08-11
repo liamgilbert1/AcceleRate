@@ -111,10 +111,15 @@ body {
   line-height: normal;
 }
 
-.scrollable-services {
+.scrollable-services,
+#estimates-scroller {
   overflow-y: scroll;
   overflow-x: hidden;
   width: 85%;
+}
+
+#estimates-scroller {
+  width: 95%;
 }
 
 .services-rect {
@@ -298,7 +303,7 @@ body {
 }
 
 .service-estimate {
-  width: 400px;
+  width: 90%;
   height: 70px;
 }
 
