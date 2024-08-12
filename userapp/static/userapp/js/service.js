@@ -26,12 +26,6 @@ const landscapeServiceSelectionColumn = document.getElementById(
 
 const serviceSelector = document.getElementById("service-selector");
 
-// button to look up the address
-const quoteButton = document.getElementById("quote-button");
-
-// button to get the area of the polygon
-const getAreaButton = document.getElementById("get-area");
-
 // the box where the user can enter an address
 const searchBox = document.getElementById("search");
 
@@ -66,6 +60,8 @@ const serviceSelectorMaxWidth = window
 let nextButtons;
 
 let backButtons;
+
+let currentService
 
 // the parent container for the services
 let serviceContainer;
@@ -181,10 +177,6 @@ function next() {
   progressLines[currentPageIndex].classList.add("active-progress");
   progressCheckpoints[currentPageIndex].classList.add("active-progress");
 
-  if (activePage === pages[1]) {
-    initAutocomplete();
-  }
-
   if (newActivePage === pages[2]) {
     outputServices();
   }
@@ -199,6 +191,7 @@ function next() {
     progressText[currentPageIndex + 1].classList.add("activated-progress-text");
     progressText[currentPageIndex + 1].classList.add("active-progress-text");
     progressText[currentPageIndex].classList.remove("active-progress-text");
+
     listenNext();
     listenBack();
   });
@@ -380,21 +373,27 @@ function initAutocomplete() {
   // until the user has selected an address from the autocomplete dropdown
   searchBox.addEventListener("input", function () {
     searchable = false;
-    quoteButton.style.backgroundColor = "#BDBDBD";
   });
 
   // adds event listener to the search box so that the enter key does not invoke a 'place_changed' event
   searchBox.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       event.stopImmediatePropagation();
+      if (searchable) {
+        search();
+      }
     }
   });
 
-  // adds event listeners to the quote button to call the search function on click
-  quoteButton.addEventListener("click", search);
-
-  // adds event listener to the get area button to call the getArea function on click
-  getAreaButton.addEventListener("click", getArea);
+  // prevents control z or command z from undoing the user's input in the search box
+  document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.key === "z") {
+      event.preventDefault();
+    }
+    if (event.metaKey && event.key === "z") {
+      event.preventDefault();
+    }
+  });
 }
 
 // function to be called when the user has selected an address from the autocomplete dropdown
@@ -402,8 +401,9 @@ function initAutocomplete() {
 function addressSelected() {
   // quote button is now clickable
   searchable = true;
-  // change the color of the quote button to green
-  quoteButton.style.backgroundColor = "#4CAF50";
+  search();
+  // keep the search box selected actively
+  searchBox.focus();
 }
 
 // function to be called when the user has clicked the quote button

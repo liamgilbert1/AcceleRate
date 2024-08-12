@@ -109,11 +109,12 @@
           </div>
         </div>
         <div id="service-details">
-          <div class="page-section-title">Enter Your Address</div>
+          <div class="page-section-title">Service Details</div>
           <div id="search-tool">
-            <input id="search" type="text" placeholder="Enter your address" />
-            <button id="quote-button">Quote</button>
-            <button id="get-area">Get Area</button>
+            <div id="address-search">
+              <div class="section-title" id="address-header">Select Address From Dropdown</div>
+              <input id="search" type="text" placeholder="Enter your address" />
+            </div>
             <div id="area"></div>
           </div>
           <div id="map"></div>
@@ -130,46 +131,7 @@
             <div class="services-rect">
               <div class="scrollable-services" id="estimates-scroller">
                 <div id="service-container">
-                  <!-- <div class="service-estimate">
-                    <div class="service-range-text">Service 1</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 2</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 3</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 3</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 3</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 1</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 2</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 3</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 3</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div>
-                  <div class="service-estimate">
-                    <div class="service-range-text">Service 3</div>
-                    <div class="service-range-text">$000.00 - $9,999.00</div>
-                  </div> -->
+                  
                 </div>
               </div>
             </div>
@@ -230,7 +192,7 @@
     <script src="{% static 'userapp/js/service.js' %}"></script>
     <script
       async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-5X3qnVlaTu7rlwcpV7neQZDCEw-eMdA&loading=async&libraries=places,drawing,geometry"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-5X3qnVlaTu7rlwcpV7neQZDCEw-eMdA&loading=async&libraries=places,drawing,geometry&callback=initAutocomplete"
     ></script>
   </body>
 </html>
