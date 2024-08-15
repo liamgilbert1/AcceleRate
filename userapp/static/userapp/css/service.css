@@ -29,6 +29,13 @@ body {
   bottom: 0;
 }
 
+.checkmark-img {
+  height: 40%;
+  width: 40%;
+  justify-self: center;
+  position: fixed;
+}
+
 .select-services-page {
   position: relative;
   width: 100%;
@@ -85,7 +92,8 @@ body {
   transform: translateX(100vw);
 }
 
-#submit {
+#submit,
+#post-submit {
   position: absolute;
   width: 635px;
   height: 531px;
@@ -98,6 +106,12 @@ body {
   justify-content: space-around;
   transition: transform 0.5s ease-out;
   transform: translateX(100vw);
+}
+
+#post-submit {
+  height: 454px;
+  transition: none;
+  transform: none;
 }
 
 .page-section-title {

@@ -61,7 +61,9 @@ let nextButtons;
 
 let backButtons;
 
-let currentService
+let submitButton;
+
+let currentService;
 
 // the parent container for the services
 let serviceContainer;
@@ -83,6 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   backButtons = document.querySelectorAll(".back");
   listenBack();
+
+  submitButton = document.getElementById("submit-button");
+  listenSubmit();
 
   let services = document.querySelectorAll(".service");
   services.forEach((service) => {
@@ -150,6 +155,11 @@ function listenBack() {
   });
 }
 
+function listenSubmit() {
+  console.log("Listening for submit");
+  submitButton.addEventListener("click", submit);
+}
+
 function ignoreNext() {
   nextButtons.forEach((button) => {
     button.removeEventListener("click", next);
@@ -192,6 +202,8 @@ function next() {
     progressText[currentPageIndex + 1].classList.add("active-progress-text");
     progressText[currentPageIndex].classList.remove("active-progress-text");
 
+    listenSubmit();
+
     listenNext();
     listenBack();
   });
@@ -225,6 +237,14 @@ function back() {
     listenNext();
     listenBack();
   });
+}
+
+// function to submit the form
+function submit() {
+  pages[pages.length - 1].style.display = "none";
+
+  postSubmit = document.getElementById("post-submit");
+  postSubmit.style.display = "flex";
 }
 
 // function to slide the page to the left
@@ -263,7 +283,7 @@ function select(service) {
     newService.classList.add("selected-service");
     service.classList.add("added-service");
   }
-  estServices.push({name: service.textContent, range: "$TBD-$TBD"});
+  estServices.push({ name: service.textContent, range: "$TBD-$TBD" });
   service.addEventListener(
     "click",
     function () {
@@ -284,7 +304,9 @@ function deselect(service) {
   } else {
     service.classList.remove("added-service");
   }
-  estServices = estServices.filter((estService) => estService.name !== service.textContent);
+  estServices = estServices.filter(
+    (estService) => estService.name !== service.textContent
+  );
   service.addEventListener(
     "click",
     function () {
