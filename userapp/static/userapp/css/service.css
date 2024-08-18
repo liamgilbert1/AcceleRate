@@ -85,7 +85,8 @@ body {
   transform: translateX(100vw);
 }
 
-#submit {
+#submit,
+#post-submit {
   position: absolute;
   width: 635px;
   height: 531px;
@@ -98,6 +99,12 @@ body {
   justify-content: space-around;
   transition: transform 0.5s ease-out;
   transform: translateX(100vw);
+}
+
+#post-submit {
+  justify-content: space-evenly;
+  transition: none;
+  transform: none;
 }
 
 .page-section-title {
@@ -195,7 +202,8 @@ body {
   text-align: center;
 }
 
-.section-title {
+.section-title,
+.post-section-descr {
   font-family: "Roboto-ExtraBold", Helvetica;
   font-weight: 800;
   color: #555050e8;
@@ -203,6 +211,10 @@ body {
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
+}
+
+.post-section-descr {
+  font-size: clamp(0px, 7vw, 20px);
 }
 
 .overlap-group {
@@ -443,6 +455,12 @@ body {
 
 .message-input {
   height: 150px;
+}
+
+.checkmark-img {
+  width: 225px;
+  height: 225px;
+  object-fit: contain;
 }
 
 #search-tool {
