@@ -172,6 +172,10 @@ function ignoreBack() {
   });
 }
 
+function ignoreSubmit() {
+  submitButton.removeEventListener("click", submit);
+}
+
 // function to go to the next page
 function next() {
   if (activePage === pages[pages.length - 1]) {
@@ -180,6 +184,7 @@ function next() {
 
   ignoreNext();
   ignoreBack();
+  ignoreSubmit();
 
   let currentPageIndex = pages.indexOf(activePage);
   let newActivePage = pages[currentPageIndex + 1];
@@ -203,7 +208,6 @@ function next() {
     progressText[currentPageIndex].classList.remove("active-progress-text");
 
     listenSubmit();
-
     listenNext();
     listenBack();
   });
