@@ -485,3 +485,18 @@ body {
 #search {
   width: 100%;
 }
+
+.gmnoprint[role= "menubar"] {
+  display: flex;
+  flex-direction: column;
+  transform-origin: left center;
+  transform: scale(1.5);
+}
+
+button[title="Draw a shape"], button[title="Stop drawing"] {
+  border-bottom-left-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+
