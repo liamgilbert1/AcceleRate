@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const homePage = document.getElementById('home-page');
-    const scrollIndicator = document.getElementById('scroll-indicator');
+    const scrollIndicator = document.getElementById('scott');
     let scrollAnimationBuffer = 50;
 
     homePage.addEventListener('scroll', () => {
