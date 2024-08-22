@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'home/css/home.css' %}"
+    />
+</head>
+<body>
+  <div id="header">
+    <div id="branding">
+      <div id="logo"></div>
+      <div id="company-name">AcceleRate</div>
+    </div>
+    <div id="nav">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#contact">Contact</a>
+      <button class="action-button" id="login">Login</button>
+    </div>
+  </div>
+  <div id="home-page">
+    <div id="about" class="section white">
+    </div>
+    <div class="section green">
+    </div>
+    <div class="section white">
+    </div>
+    <div class="section green">
+    </div>
+    <div class="section white">
+    </div>
+    <div id="pricing" class="section green">
+    </div>
+    <div id="contact" class="section white">
+    </div>
+  </div>
+  <div id="scroll-indicator"></div>
+  <script src="{% static 'home/js/home.js' %}"></script>
+</body>
+</html>
