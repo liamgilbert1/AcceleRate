@@ -14,7 +14,7 @@
   <body>
     <div id="header">
       {% if user.is_authenticated %}
-      <a href="/home">Logout</a>
+      <a href="/home/logout/">Logout</a>
       <a href="/profile">Profile</a>
       {% else %}
       <a href="/home/login/auth0">Login</a>
