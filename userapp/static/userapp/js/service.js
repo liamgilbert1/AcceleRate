@@ -122,9 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
   outputServices(estServices);
 });
 
-function outputServices() {
+async function outputServices() {
   serviceContainer.innerHTML = "";
-  estServices.forEach((service) => {
+  for (service of estServices) {
     let serviceRange = document.createElement("div");
     serviceRange.classList.add("service-estimate");
 
@@ -134,13 +134,31 @@ function outputServices() {
 
     let servicePrice = document.createElement("div");
     servicePrice.classList.add("service-range-text");
-    servicePrice.textContent = service.range;
+    try {
+      // Fetch the quote asynchronously
+      const price = await getQuote();
 
+      // Debug: Check what price is returned
+      console.log("Returned price:", price);
+
+      // Check if price is a valid number and display it
+      if (price !== undefined && price !== null) {
+        // Format the price
+        servicePrice.textContent = "$" + parseFloat(price).toFixed(2);
+      } else {
+        servicePrice.textContent = "Price not available";
+      }
+    } catch (error) {
+      // Handle any errors from getQuote
+      console.error("Error fetching quote:", error);
+      servicePrice.textContent = "Error fetching price";
+    }
+
+    // Append the service details to the container
     serviceRange.appendChild(serviceName);
     serviceRange.appendChild(servicePrice);
-
     serviceContainer.appendChild(serviceRange);
-  });
+  };
 }
 
 function listenNext() {
@@ -506,13 +524,48 @@ function search() {
 }
 
 // function to be called when the user has clicked the get area button
-function getArea() {
+async function getQuote() {
   area = 0;
   // iterate through the polygons array and calculate the area of each polygon
   for (let i = 0; i < polygons.length; i++) {
     let vertices = polygons[i].getPath();
     area = area + google.maps.geometry.spherical.computeArea(vertices);
   }
-  // plugs the area into the html
-  document.getElementById("area").innerHTML = area;
+
+  // convert the area from square meters to square feet
+  area = area * 10.7639;
+
+  price = await calculateQuote(area);
+
+  return price;
+}
+
+async function calculateQuote(squareFootage) {
+  console.log("Calculating quote for square footage:", squareFootage);
+
+  const data = {
+    squareFootage: squareFootage,
+  };
+
+  try {
+    const response = await fetch("/userapp/calculate-quote/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",  // Ensure the headers match what worked in curl
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      console.error("Network response was not ok:", response.status, response.statusText);
+      return;
+    }
+
+    const responseData = await response.json();
+    console.log("Calculated price:", responseData.price);
+    return responseData.price;
+
+  } catch (error) {
+    console.error("Error fetching quote:", error);
+  }
 }

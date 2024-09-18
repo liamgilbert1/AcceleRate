@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'userapp',
     'home',
     'social_django',
+    'core'
 ]
 
 SOCIAL_AUTH_TRAILING_SLASH = False
