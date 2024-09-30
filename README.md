@@ -1,4 +1,4 @@
-# AcceleRate
+# AcceleRate (First design using Django)
 Landscaping Automated Price Estimation Startup
 
 ## About AcceleRate
